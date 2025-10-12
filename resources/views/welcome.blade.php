@@ -21,7 +21,7 @@
 </head>
 
 <body class="font-sans
-        antialiased" dir="{{ session('lang') == 'ar' ? 'rtl' : 'ltr' }}">
+        antialiased bg-[#EED9C4]" dir="{{ session('lang') == 'ar' ? 'rtl' : 'ltr' }}">
 
     <div class="">
         @livewire('ads-modal')
@@ -40,6 +40,8 @@
             <livewire:product-group :view="$view" />
         @endforeach
         <br>
+
+        <livewire:group-service>
 
         <livewire:brand-story />
         {{-- <x-home.brands :brands="$brands" /> --}}

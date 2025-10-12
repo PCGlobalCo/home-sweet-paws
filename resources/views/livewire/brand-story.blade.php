@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-white py-20 px-4">
+<div class="min-h-screen bg-[#EED9C4] py-20 px-4">
     <div class="max-w-7xl mx-auto">
         <!-- Main container with responsive grid -->
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">

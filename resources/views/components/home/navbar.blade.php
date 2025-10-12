@@ -1,4 +1,4 @@
-<nav class="bg-white border-b border-gray-200 shadow-sm z-50 wowDiv nav-bar" id="wowDiv"
+<nav class="bg-[#FAF3E0] border-b border-gray-200 shadow-sm z-50 wowDiv nav-bar" id="wowDiv"
     data-animation="animate__fadeInDown" data-delay="300">
     <div class="md:max-w-6xl mx-auto px-8 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">

@@ -1,4 +1,4 @@
-<footer class="relative bg-white shadow-xl border-t overflow-hidden">
+<footer class="relative bg-[#FAF3E0] shadow-xl border-t border-black overflow-hidden">
 
 
     <div class="relative mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">

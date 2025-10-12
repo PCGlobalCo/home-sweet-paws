@@ -1,0 +1,281 @@
+@extends('layouts.home')
+@section('content')
+    <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8">
+        <div class="md:pt-10 md:max-w-4xl mx-auto px-4">
+            <!-- Enhanced Breadcrumb -->
+            <nav class="flex px-6 py-4 text-gray-700 border border-gray-200/60 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm dark:bg-gray-800/80 dark:border-gray-700/60 mb-8"
+                aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3 rtl:space-x-reverse">
+                    <li class="inline-flex items-center">
+                        <a href="{{ route('cart.show') }}"
+                            class="inline-flex items-center text-sm font-medium text-gray-600 hover:text-purple-600 transition-colors duration-200 dark:text-gray-400 dark:hover:text-purple-400">
+                            <svg class="w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                            </svg>
+                            {{ session('lang') == 'en' ? 'Review Order' : 'العودة' }}
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="rtl:rotate-180 block w-3 h-3 mx-2 text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 9 4-4-4-4" />
+                            </svg>
+                            <span class="text-sm font-medium text-black">
+                                {{ session('lang') == 'en' ? 'Shipping' : 'التوصيل' }}
+                            </span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Enhanced Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-light text-gray-800 dark:text-gray-100 mb-2">
+                    {{ session('lang') == 'en' ? 'Cash on Delivery' : 'الدفع عند الاستلام' }}
+                </h1>
+                <p class="text-gray-600 dark:text-gray-400">
+                    {{ session('lang') == 'en' ? 'Complete your order details below' : 'أكمل تفاصيل طلبك أدناه' }}
+                </p>
+            </div>
+
+            <!-- Enhanced Form -->
+            <div
+                class="bg-white/80 backdrop-blur-sm dark:bg-gray-800/80 rounded-2xl shadow-xl border border-gray-200/60 dark:border-gray-700/60 overflow-hidden">
+                {{-- <div class="bg-gradient-to-r from-purple-600 to-pink-600 h-2"></div> --}}
+
+                <form action="{{ route('order.store') }}" method="POST" class="p-8 md:p-10 space-y-8">
+                    @csrf
+                    @method('POST')
+
+                    <!-- Personal Information Section -->
+                    <div class="space-y-6">
+                        <h2
+                            class="text-xl font-semibold text-gray-800 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2">
+                            {{ session('lang') == 'en' ? 'Personal Information' : 'المعلومات الشخصية' }}
+                        </h2>
+
+                        <div class="relative group">
+                            <input type="text" name="full_name" id="full_name"
+                                class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200"
+                                placeholder=" " required />
+                            <label for="full_name"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                {{ session('lang') == 'en' ? 'Full Name' : 'الاسم الكامل' }}
+                            </label>
+                        </div>
+
+                        <div class="relative group">
+                            <input type="tel" name="phone" id="phone"
+                                class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200"
+                                placeholder=" " required />
+                            <label for="phone"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                {{ session('lang') == 'en' ? 'Phone Number' : 'رقم الهاتف' }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Schedule Section -->
+                    <div class="space-y-6">
+                        <h2
+                            class="text-xl font-semibold text-gray-800 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2">
+                            {{ session('lang') == 'en' ? 'Delivery Schedule' : 'جدول التسليم' }}
+                        </h2>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="relative group">
+                                <input type="date" name="delivery_date" id="delivery_date"
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200"
+                                    min="{{ date('Y-m-d', strtotime('+1 day')) }}" required />
+                                <label for="delivery_date"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                    {{ session('lang') == 'en' ? 'Preferred Delivery Date' : 'تاريخ التسليم المفضل' }}
+                                </label>
+                            </div>
+
+                            <div class="relative group">
+                                <select name="delivery_time" id="delivery_time"
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200"
+                                    required>
+                                    <option value="" disabled selected class="bg-white dark:bg-gray-800">
+                                        {{ session('lang') == 'en' ? 'Select time slot' : 'اختر وقت التسليم' }}
+                                    </option>
+                                    <option value="morning" class="bg-white dark:bg-gray-800">
+                                        {{ session('lang') == 'en' ? 'Morning (9:00 AM - 12:00 PM)' : 'صباحاً (9:00 ص - 12:00 م)' }}
+                                    </option>
+                                    <option value="afternoon" class="bg-white dark:bg-gray-800">
+                                        {{ session('lang') == 'en' ? 'Afternoon (12:00 PM - 3:00 PM)' : 'ظهراً (12:00 م - 3:00 م)' }}
+                                    </option>
+                                    <option value="evening" class="bg-white dark:bg-gray-800">
+                                        {{ session('lang') == 'en' ? 'Evening (3:00 PM - 6:00 PM)' : 'مساءً (3:00 م - 6:00 م)' }}
+                                    </option>
+                                    <option value="night" class="bg-white dark:bg-gray-800">
+                                        {{ session('lang') == 'en' ? 'Night (6:00 PM - 9:00 PM)' : 'ليلاً (6:00 م - 9:00 م)' }}
+                                    </option>
+                                </select>
+                                <label for="delivery_time"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                    {{ session('lang') == 'en' ? 'Preferred Time Slot' : 'الوقت المفضل' }}
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Optional Delivery Notes -->
+                        <div class="relative group">
+                            <textarea name="delivery_notes" id="delivery_notes" rows="3"
+                                class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200 resize-none"
+                                placeholder=" "></textarea>
+                            <label for="delivery_notes"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                {{ session('lang') == 'en' ? 'Special Delivery Instructions (Optional)' : 'تعليمات خاصة للتسليم (اختياري)' }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Address Information Section -->
+                    <div class="space-y-6">
+                        <h2
+                            class="text-xl font-semibold text-gray-800 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2">
+                            {{ session('lang') == 'en' ? 'Delivery Address' : 'عنوان التوصيل' }}
+                        </h2>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="relative group">
+                                <input type="text" name="street" id="street"
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200"
+                                    placeholder=" " required />
+                                <label for="street"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                    {{ session('lang') == 'en' ? 'Street Address' : 'عنوان الشارع' }}
+                                </label>
+                            </div>
+
+                            <div class="relative group">
+                                <input type="text" name="apartment" id="apartment"
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200"
+                                    placeholder=" " required />
+                                <label for="apartment"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                    {{ session('lang') == 'en' ? 'Province' : 'المحافظة' }}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="relative group">
+                                <select required
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200"
+                                    name="country" id="country">
+                                    <option value="LEBANON" class="bg-white dark:bg-gray-800">
+                                        {{ session('lang') == 'en' ? 'Lebanon' : 'لبنان' }}
+                                    </option>
+                                </select>
+                                <label for="country"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                    {{ session('lang') == 'en' ? 'Country' : 'الدولة' }}
+                                </label>
+                            </div>
+
+                            <div class="relative group">
+                                <input type="text" name="city" id="city"
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-purple-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer transition-colors duration-200"
+                                    placeholder=" " required />
+                                <label for="city"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-purple-600 peer-focus:dark:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">
+                                    {{ session('lang') == 'en' ? 'City / State / Province' : 'المدينة / الولاية / المقاطعة' }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Important Notice -->
+                    <div
+                        class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 p-6">
+                        <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                            <div class="flex-shrink-0">
+                                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                @if (session('lang') == 'en')
+                                    <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-2">Important
+                                        Notice</h3>
+                                    <div class="text-xs text-gray-600 dark:text-gray-400 space-y-2 leading-relaxed">
+                                        <p>Please make sure your details are correct. Our team will contact you via <span
+                                                class="font-medium text-green-600 dark:text-green-400">WhatsApp</span> to
+                                            confirm your order and preferred payment method (Cash on Delivery or Bank
+                                            Transfer).</p>
+                                        <p class="font-medium">Your selected delivery date and time are preferred but
+                                            subject to availability. We'll confirm the exact schedule when we contact you.
+                                        </p>
+                                        <p class="italic">We ensure a secure shopping experience and fast delivery within
+                                            Lebanon, with international shipping available upon request.</p>
+                                    </div>
+                                @else
+                                    <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-2"
+                                        dir="rtl">ملاحظة مهمة قبل الإرسال</h3>
+                                    <div class="text-xs text-gray-600 dark:text-gray-400 space-y-2 leading-relaxed"
+                                        dir="rtl">
+                                        <p>يُرجى التأكد من صحة المعلومات أعلاه. سيتم التواصل معك عبر <span
+                                                class="font-medium text-green-600 dark:text-green-400">واتساب</span> لتأكيد
+                                            الطلب وطريقة الدفع المناسبة (الدفع عند الاستلام أو التحويل الإلكتروني).</p>
+                                        <p class="font-medium">تاريخ ووقت التسليم المختار هو الوقت المفضل لديك وقد يتغير
+                                            حسب التوفر. سنؤكد الموعد الدقيق عند التواصل معك.</p>
+                                        <p class="italic">نحن نضمن لك تجربة تسوق آمنة وتوصيل سريع إلى باب منزلك داخل لبنان،
+                                            مع إمكانية الشحن الدولي حسب الوجهة.</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex justify-center md:justify-end">
+                            <button type="submit"
+                                class="group relative overflow-hidden border text-black font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-800">
+                                <span class="relative z-10 flex items-center space-x-2 rtl:space-x-reverse">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                    </svg>
+                                    <span>{{ session('lang') == 'en' ? 'Proceed via WhatsApp' : 'تأكيد عبر واتساب' }}</span>
+                                </span>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional: Add JavaScript for date validation and enhancements -->
+    <script>
+        // Disable past dates and weekends (optional)
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('delivery_date');
+            const today = new Date();
+            today.setDate(today.getDate() + 1); // Start from tomorrow
+
+            // Format date as YYYY-MM-DD
+            const minDate = today.toISOString().split('T')[0];
+            dateInput.setAttribute('min', minDate);
+
+            // Optional: Set max date (e.g., 30 days from now)
+            const maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() + 30);
+            dateInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
+        });
+    </script>
+@endsection

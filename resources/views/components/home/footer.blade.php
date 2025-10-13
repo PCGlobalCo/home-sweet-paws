@@ -1,6 +1,4 @@
-<footer class="relative bg-[#FAF3E0] shadow-xl border-t border-black overflow-hidden">
-
-
+<footer class="relative bg-[#EED9C4] shadow-xl overflow-hidden">
     <div class="relative mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
             <!-- Logo Section -->
@@ -31,11 +29,11 @@
                         <h2 class="mb-6 text-sm font-semibold text-black uppercase tracking-wider">
                             {{ session('lang') == 'en' ? 'Support' : 'الدعم' }}</h2>
                         <ul class="text-black font-medium space-y-3">
-                            <li class="bg-white/80 backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
+                            <li class="backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
                                 <a href="/about"
                                     class="text-black transition-colors duration-300">{{ session('lang') == 'en' ? 'About us' : 'حول الشركة' }}</a>
                             </li>
-                            <li class="bg-white/80 backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
+                            <li class=" backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
                                 <a href="/contactUs"
                                     class="text-black transition-colors duration-300">{{ session('lang') == 'en' ? 'Contact Us' : 'تواصل معنا' }}</a>
                             </li>
@@ -47,15 +45,15 @@
                         <h2 class="mb-6 text-sm font-semibold uppercase text-black tracking-wider">
                             {{ session('lang') == 'en' ? 'Legal' : 'القوانين' }}</h2>
                         <ul class="text-black font-medium space-y-3">
-                            <li class="bg-white/80 backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
+                            <li class=" backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
                                 <a href="/privacy-policy"
                                     class="text-black transition-colors duration-300">{{ session('lang') == 'en' ? 'Privacy Policy' : 'سياسة الخصوصية' }}</a>
                             </li>
-                            <li class="bg-white/80 backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
+                            <li class=" backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
                                 <a href="/terms-conditions"
                                     class="text-black transition-colors duration-300">{{ session('lang') == 'en' ? 'Terms & Conditions' : 'الشروط والأحكام' }}</a>
                             </li>
-                            <li class="bg-white/80 backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
+                            <li class=" backdrop-blur-sm px-3 py-2 rounded-md transition-all duration-300 ">
                                 <a href="/shipping-payment"
                                     class="text-black transition-colors duration-300">{{ session('lang') == 'en' ? 'Shipping & Payment' : 'الشحن و الدفع' }}</a>
                             </li>
@@ -72,7 +70,7 @@
                         <div
                             class="w-full transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-0">
                             <ul
-                                class="text-black flex flex-wrap font-medium bg-white/90 backdrop-blur-sm justify-start items-center p-4 rounded-xl gap-4 ">
+                                class="text-black flex flex-wrap font-medium  backdrop-blur-sm justify-start items-center p-4 rounded-xl gap-4 ">
                                 @foreach ($socials as $social)
                                     <li class="transform transition-all duration-300 hover:scale-110">
                                         <a href="{{ $social->url }}" target="_blank" class="block">

@@ -18,6 +18,8 @@
     },
     "dependencies": {
         "animate.css": "^4.1.1",
+        "baseline-browser-mapping": "^2.9.17",
+        "caniuse-lite": "^1.0.30001765",
         "ckeditor4": "^4.24.0",
         "ckeditor5": "^44.2.1",
         "ckeditor5-premium-features": "^44.2.1",
